@@ -9,27 +9,27 @@ import { useForm } from '../../hooks'
 import { starLoginWithEmailPassword, startGoogleSingIn } from '../../store/auth/thunks'
 import { useMemo } from 'react'
 
+const formData = {
+  email: '',
+  password: ''
+};
+
 export const LoginPages = () => {
   const dispatch = useDispatch();
   
     const {status,errorMessage} = useSelector (state => state.auth)
 
-    const {email,password,onInputChange}=useForm({
-      email: '',
-      password: ''
-    });
+    const {email,password,onInputChange}=useForm(formData);
 
     const isAuthenticating = useMemo(()=>status ==='checking',[status])
     const onSubmit = (event)=>{
       event.preventDefault()
 
-      console.log({email,password})
       //! No es esta la accion a despachar
       dispatch(starLoginWithEmailPassword({email,password}))
     }
 
     const onGoogleSingIn = () =>{
-      console.log('On Google singin')
       dispatch(startGoogleSingIn())
     }
 

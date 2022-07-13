@@ -11,7 +11,7 @@ export const JournalLayout = ({children}) => {
             {/* navbar */}
             <NavBar drawerWidth={drawerWidth} />
             {/* Sidebar */}
-            <SideBar drawerWidth={drawerWidth} />
+            <SideBar  drawerWidth={drawerWidth} />
 
             <Box
                 component='main'
